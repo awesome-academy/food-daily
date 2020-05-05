@@ -1,7 +1,8 @@
-package com.sunasterisk.fooddaily
+package com.sunasterisk.fooddaily.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sunasterisk.fooddaily.R
 
 class MainActivity : AppCompatActivity() {
 
