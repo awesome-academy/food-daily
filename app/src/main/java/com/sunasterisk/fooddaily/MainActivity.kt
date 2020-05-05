@@ -1,4 +1,4 @@
-package com.example.fooddaily
+package com.sunasterisk.fooddaily
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
