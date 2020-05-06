@@ -59,8 +59,7 @@ class RecipeResponseHandler : DataResponseHandler {
                 val title = recipe.getString("title")
 
                 val foodDetails = FoodDetails(
-                    id, title, price,
-                    readyInMinutes, summary, image, ingredients, instructions
+                    id, title, image, price, readyInMinutes, summary, ingredients, instructions
                 )
                 foodList.add(foodDetails)
             }
