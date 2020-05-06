@@ -7,6 +7,6 @@ data class FoodDetails(
     val readyMinutes: Int,
     val summary: String,
     val imageUrl: String,
-    val ingredients: Ingredients,
+    val ingredients: List<Ingredients>,
     val instructions: List<String>
 )
