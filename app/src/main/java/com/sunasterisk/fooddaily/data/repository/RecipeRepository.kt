@@ -5,11 +5,11 @@ import com.sunasterisk.fooddaily.data.source.OnLoadedCallback
 import com.sunasterisk.fooddaily.data.source.RecipeDataSource
 import com.sunasterisk.fooddaily.data.source.remote.RecipeRemoteDataSource
 
-class RecipeRepository(
-    private val remoteDataSource: RecipeRemoteDataSource
+class RecipeRepository private constructor(
+    private val remoteDataSource: RecipeDataSource.Remote
 ): RecipeDataSource.Remote {
-    override fun getRandomRecipes(url: String, callback: OnLoadedCallback<FoodDetail>) {
-        remoteDataSource.getRandomRecipes(url, callback)
+    override fun getRandomRecipes(callback: OnLoadedCallback<FoodDetail>) {
+        remoteDataSource.getRandomRecipes(callback)
     }
 
     companion object {
