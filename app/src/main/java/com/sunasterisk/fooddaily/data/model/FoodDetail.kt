@@ -1,6 +1,5 @@
 package com.sunasterisk.fooddaily.data.model
 
-import org.json.JSONArray
 import org.json.JSONObject
 
 private const val JSON_KEY_ID = "id"
@@ -17,14 +16,14 @@ private const val JSON_KEY_STEP = "step"
 private const val JSON_KEY_STEPS = "steps"
 
 data class FoodDetail(
-    val id: Int,
-    val title: String,
-    val price: String,
-    val readyMinutes: Int,
-    val summary: String,
-    val imageUrl: String,
-    val ingredients: List<Ingredient>,
-    val instructions: List<String>
+    var id: Int = 0,
+    var title: String = "",
+    var price: String? = null,
+    var readyMinutes: Int? = null,
+    var summary: String? = null,
+    var imageUrl: String = "",
+    var ingredients: List<Ingredient>? = null,
+    var instructions: List<String>? = null
 ) {
     constructor(jsonObject: JSONObject) : this(
         id = jsonObject.optInt(JSON_KEY_ID),

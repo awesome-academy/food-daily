@@ -2,11 +2,8 @@ package com.sunasterisk.fooddaily.data.source
 
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 
-interface RecipeDataSource {
+interface SearchDataSource {
     interface Remote {
-        fun getRandomRecipes(callback: OnLoadedCallback<FoodDetail>)
-    }
-    interface Local {
-
+        fun searchRecipe(keyword: String, callback: OnLoadedCallback<FoodDetail>)
     }
 }

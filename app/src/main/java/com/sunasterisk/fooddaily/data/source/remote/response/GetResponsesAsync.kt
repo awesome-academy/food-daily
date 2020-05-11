@@ -13,7 +13,6 @@ class GetResponsesAsync(
 
     override fun doInBackground(vararg params: String): List<FoodDetail>? =
         //TODO("xu ly request den api lay data ve parse sang food model")
-        // if getResponse null -> return null
         try {
             dataResponseHandler.getResponse(params[0])
         } catch (exception: Exception) {
@@ -23,8 +22,6 @@ class GetResponsesAsync(
 
     override fun onPostExecute(result: List<FoodDetail>?) {
         super.onPostExecute(result)
-        // if result not null -> callback.onSuccess
-        // else if exception not null -> callback.onFailure
         result?.let {
             callback.onSuccess(it)
         } ?: exception?.let {

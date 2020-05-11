@@ -7,7 +7,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.*
 
-class RecipeResponseHandler private constructor() : DataResponseHandler {
+class SearchResponseHandler private constructor(): DataResponseHandler {
     override fun getResponse(urlRequest: String): List<FoodDetail> {
         val strJSON = handleConnect(URL(urlRequest))
         return convertJSONToFood(strJSON)
@@ -40,8 +40,8 @@ class RecipeResponseHandler private constructor() : DataResponseHandler {
     }
 
     companion object {
-        private var instance: RecipeResponseHandler? = null
-        fun getInstance(): RecipeResponseHandler =
-            instance ?: RecipeResponseHandler().also { instance = it }
+        private var instance: SearchResponseHandler? = null
+        fun getInstance(): SearchResponseHandler =
+            instance ?: SearchResponseHandler().also { instance = it }
     }
 }
