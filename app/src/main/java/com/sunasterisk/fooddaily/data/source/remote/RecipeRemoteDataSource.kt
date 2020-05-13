@@ -10,7 +10,7 @@ import com.sunasterisk.fooddaily.data.source.remote.response.RecipeResponseHandl
 import com.sunasterisk.fooddaily.utils.ApiKeys
 
 class RecipeRemoteDataSource private constructor() : RecipeDataSource.Remote {
-    override fun getRandomRecipes(callback: OnLoadedCallback<FoodDetail>) {
+    override fun getRandomRecipes(callback: OnLoadedCallback<List<FoodDetail>>) {
 
         val urlRequest = DataRequest(
             paths = listOf(
@@ -26,8 +26,8 @@ class RecipeRemoteDataSource private constructor() : RecipeDataSource.Remote {
     }
 
     companion object {
-        private var instance: RecipeRemoteDataSource? = null
-        fun getInstance(): RecipeRemoteDataSource =
+        private var instance: RecipeDataSource.Remote? = null
+        fun getInstance(): RecipeDataSource.Remote =
             instance ?: RecipeRemoteDataSource().also { instance = it }
     }
 }

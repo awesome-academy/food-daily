@@ -6,7 +6,7 @@ import com.sunasterisk.fooddaily.data.source.OnLoadedCallback
 
 class GetResponsesAsync(
     private val dataResponseHandler: DataResponseHandler,
-    private val callback: OnLoadedCallback<FoodDetail>
+    private val callback: OnLoadedCallback<List<FoodDetail>>
 ) : AsyncTask<String, Void, List<FoodDetail>>() {
 
     private var exception: Exception? = null

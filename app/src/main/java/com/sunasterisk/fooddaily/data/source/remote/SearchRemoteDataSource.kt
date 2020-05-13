@@ -6,12 +6,13 @@ import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.source.OnLoadedCallback
 import com.sunasterisk.fooddaily.data.source.SearchDataSource
 import com.sunasterisk.fooddaily.data.source.remote.response.GetResponsesAsync
+import com.sunasterisk.fooddaily.data.source.remote.response.RecipeByIdResponseHandler
 import com.sunasterisk.fooddaily.data.source.remote.response.SearchResponseHandler
 import com.sunasterisk.fooddaily.utils.ApiKeys
 
 class SearchRemoteDataSource private constructor() : SearchDataSource.Remote {
-    override fun searchRecipe(keyword: String, callback: OnLoadedCallback<FoodDetail>) {
 
+    override fun searchRecipeComplex(keyword: String, callback: OnLoadedCallback<List<FoodDetail>>) {
         val urlRequest = DataRequest(
             paths = listOf(
                 ApiKeys.PATH_RECIPES,
@@ -26,9 +27,24 @@ class SearchRemoteDataSource private constructor() : SearchDataSource.Remote {
         GetResponsesAsync(SearchResponseHandler.getInstance(), callback).execute(urlRequest)
     }
 
+    override fun searchRecipeById(foodId: String, callback: OnLoadedCallback<List<FoodDetail>>) {
+        val urlRequest = DataRequest(
+            paths = listOf(
+                ApiKeys.PATH_RECIPES,
+                foodId,
+                ApiKeys.PATH_INFORMATION
+            ),
+            queryParams = mapOf(
+                ApiKeys.QUERY_NUTRITION to ApiKeys.DEFAULT_NUTRITION,
+                ApiKeys.QUERY_API_KEY to BuildConfig.API_KEY
+            )
+        ).toUrl()
+        GetResponsesAsync(RecipeByIdResponseHandler.getInstance(), callback).execute(urlRequest)
+    }
+
     companion object {
-        private var instance: SearchRemoteDataSource? = null
-        fun getInstance(): SearchRemoteDataSource =
+        private var instance: SearchDataSource.Remote? = null
+        fun getInstance(): SearchDataSource.Remote =
             instance ?: SearchRemoteDataSource().also { instance = it }
     }
 }
