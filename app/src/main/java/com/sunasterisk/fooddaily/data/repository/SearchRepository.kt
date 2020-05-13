@@ -3,18 +3,24 @@ package com.sunasterisk.fooddaily.data.repository
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.source.OnLoadedCallback
 import com.sunasterisk.fooddaily.data.source.SearchDataSource
-import com.sunasterisk.fooddaily.data.source.remote.SearchRemoteDataSource
 
 class SearchRepository private constructor(
-    private val searchDataSource: SearchDataSource.Remote
+    private val remoteDataSource: SearchDataSource.Remote
 ): SearchDataSource.Remote {
-    override fun searchRecipe(keyword: String, callback: OnLoadedCallback<FoodDetail>) {
-        searchDataSource.searchRecipe(keyword, callback)
+    override fun searchRecipeComplex(
+        keyword: String,
+        callback: OnLoadedCallback<List<FoodDetail>>
+    ) {
+        remoteDataSource.searchRecipeComplex(keyword, callback)
+    }
+
+    override fun searchRecipeById(foodId: String, callback: OnLoadedCallback<List<FoodDetail>>) {
+        remoteDataSource.searchRecipeById(foodId, callback)
     }
 
     companion object {
         private var instance: SearchRepository? = null
-        fun getInstance(searchRemoteDataSource: SearchRemoteDataSource): SearchRepository =
-            instance ?: SearchRepository(searchRemoteDataSource).also { instance = it }
+        fun getInstance(remoteDataSource: SearchDataSource.Remote): SearchRepository =
+            instance ?: SearchRepository(remoteDataSource).also { instance = it }
     }
 }
