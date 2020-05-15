@@ -13,9 +13,9 @@ interface DataResponseHandler {
 
     fun convertJSONToFood(strJSON: String, jsonKey: String): List<FoodDetail> {
         val foodDetails = mutableListOf<FoodDetail>()
-        val recipes = JSONObject(strJSON).getJSONArray(jsonKey)
+        val recipes = JSONObject(strJSON).optJSONArray(jsonKey)
         for (i in 0 until recipes.length()) {
-            val food = FoodDetail(recipes.getJSONObject(i))
+            val food = FoodDetail(recipes.optJSONObject(i))
             foodDetails.add(food)
         }
         return foodDetails

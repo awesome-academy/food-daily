@@ -2,7 +2,6 @@ package com.sunasterisk.fooddaily.data.source.remote.response
 
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.utils.Constants
-import java.net.HttpURLConnection
 import java.net.URL
 
 class RecipeResponseHandler private constructor() : DataResponseHandler {

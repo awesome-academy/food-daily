@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FoodDaily</string>
+    <string name="title_loading_data">Loading data…</string>
+    <string name="title_error">Error: </string>
+    <string name="title_description_image_background_splash_1">SplashScreen background</string>
+    <string name="title_description_image_background_splash_2">SplashScreen background</string>
+    <string name="title_description_image_food_daily">Image FoodDaily</string>
+    <string name="title_description_icon_loading_data">Icon loading data</string>
 </resources>

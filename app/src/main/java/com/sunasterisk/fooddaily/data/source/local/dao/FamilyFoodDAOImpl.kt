@@ -1,7 +1,6 @@
 package com.sunasterisk.fooddaily.data.source.local.dao
 
 import android.content.ContentValues
-import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.source.local.database.FoodDailyDatabase

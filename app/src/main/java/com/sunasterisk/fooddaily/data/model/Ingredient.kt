@@ -1,3 +1,7 @@
 package com.sunasterisk.fooddaily.data.model
 
-data class Ingredient(val id: Int, val name: String, val original: String)
+data class Ingredient(
+    var id: String? = "",
+    var name: String? = "",
+    var original: String? = ""
+)
