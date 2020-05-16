@@ -19,6 +19,7 @@ class RecipeRemoteDataSource private constructor() : RecipeDataSource.Remote {
             ),
             queryParams = mapOf(
                 ApiKeys.QUERY_NUMBER to ApiKeys.DEFAULT_RANDOM_RESULT_LIMIT,
+                ApiKeys.QUERY_LIMIT_LICENSE to ApiKeys.DEFAULT_RESULT_LIMIT_LICENSE,
                 ApiKeys.QUERY_API_KEY to BuildConfig.API_KEY
             )
         ).toUrl()
