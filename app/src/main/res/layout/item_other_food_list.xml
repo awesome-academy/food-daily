@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_120"
+    android:layout_margin="@dimen/dp_2"
+    android:elevation="@dimen/dp_2"
+    android:outlineProvider="bounds"
+    android:padding="@dimen/dp_8">
+
+    <ImageView
+        android:id="@+id/imageFoodOtherList"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/title_image_food_detail_item"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textFoodNameOtherList"
+        style="@style/TextFoodName"
+        android:layout_marginStart="@dimen/dp_16"
+        android:textSize="@dimen/sp_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageFoodOtherList"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textOtherListReadyMinutes"
+        style="@style/DailyMenuTextDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFoodOtherList"
+        app:layout_constraintStart_toStartOf="@+id/textFoodNameOtherList" />
+
+    <TextView
+        android:id="@+id/textOtherListPrice"
+        style="@style/DailyMenuTextDescription"
+        android:layout_marginStart="@dimen/dp_16"
+        app:layout_constraintStart_toEndOf="@+id/textOtherListReadyMinutes"
+        app:layout_constraintTop_toTopOf="@+id/textOtherListReadyMinutes" />
+</androidx.constraintlayout.widget.ConstraintLayout>

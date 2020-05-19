@@ -1,5 +1,7 @@
 package com.sunasterisk.fooddaily.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONObject
 
 private const val JSON_KEY_ID = "id"
@@ -15,6 +17,7 @@ private const val JSON_KEY_ORIGINAL = "original"
 private const val JSON_KEY_STEP = "step"
 private const val JSON_KEY_STEPS = "steps"
 
+@Parcelize
 data class FoodDetail(
     var id: String? = "",
     var title: String? = "",
@@ -23,8 +26,9 @@ data class FoodDetail(
     var summary: String? = "",
     var imageUrl: String? = "",
     var ingredients: List<Ingredient>? = null,
-    var instructions: List<String>? = null
-) {
+    var instructions: List<Instruction>? = null
+) : Parcelable {
+
     constructor(jsonObject: JSONObject) : this(
         id = jsonObject.optString(JSON_KEY_ID),
         title = jsonObject.optString(JSON_KEY_TITLE),
@@ -43,16 +47,16 @@ data class FoodDetail(
                 add(ingredient)
             }
         },
-        instructions = mutableListOf<String>().apply {
+        instructions = mutableListOf<Instruction>().apply {
             val instructionList = jsonObject.optJSONArray(JSON_KEY_INSTRUCTIONS)
             val instruction = instructionList.optJSONObject(0)
             val stepList = instruction.optJSONArray(JSON_KEY_STEPS)
             for (i in 0 until stepList.length()) {
                 val stepItem = stepList.optJSONObject(i)
                 val step = stepItem.optString(JSON_KEY_STEP)
-                add(step)
+                val instruction = Instruction(step)
+                add(instruction)
             }
-
         }
     )
 }

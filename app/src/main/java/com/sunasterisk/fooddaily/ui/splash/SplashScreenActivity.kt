@@ -1,5 +1,8 @@
 package com.sunasterisk.fooddaily.ui.splash
 
+import android.content.Intent
+import android.os.Parcelable
+import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.sunasterisk.fooddaily.R
@@ -12,7 +15,10 @@ import com.sunasterisk.fooddaily.data.source.local.dao.PartyFoodDAOImpl
 import com.sunasterisk.fooddaily.data.source.local.database.FoodDailyDatabase
 import com.sunasterisk.fooddaily.data.source.remote.RecipeRemoteDataSource
 import com.sunasterisk.fooddaily.ui.base.BaseActivity
+import com.sunasterisk.fooddaily.ui.main.MainActivity
+import com.sunasterisk.fooddaily.utils.Constants
 import kotlinx.android.synthetic.main.activity_splash_screen.*
+import java.util.ArrayList
 
 class SplashScreenActivity : BaseActivity(), SplashScreenContract.View {
 
@@ -38,6 +44,13 @@ class SplashScreenActivity : BaseActivity(), SplashScreenContract.View {
     }
 
     override fun onTransportDataToHome(data: List<FoodDetail>) {
+        val intentMain = Intent(applicationContext, MainActivity::class.java).apply {
+            putParcelableArrayListExtra (
+                Constants.KEY_FOOD_LIST,
+                data as ArrayList<out Parcelable>
+            )
+        }
+        startActivity(intentMain)
     }
 
     override fun showError(exception: Exception) {

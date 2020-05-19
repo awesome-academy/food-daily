@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.splash.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".ui.splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
