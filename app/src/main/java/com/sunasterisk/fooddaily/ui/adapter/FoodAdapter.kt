@@ -11,11 +11,7 @@ import com.sunasterisk.fooddaily.utils.Constants
 class FoodAdapter(
     private val foodList: List<FoodDetail>,
     private val viewType: Int
-) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
-
-    abstract class FoodViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        abstract fun bind(food: FoodDetail)
-    }
+) : RecyclerView.Adapter<FoodViewHolder>() {
 
     override fun getItemViewType(position: Int): Int = viewType
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
