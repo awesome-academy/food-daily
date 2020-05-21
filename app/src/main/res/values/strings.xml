@@ -6,4 +6,13 @@
     <string name="title_description_image_background_splash_2">SplashScreen background</string>
     <string name="title_description_image_food_daily">Image FoodDaily</string>
     <string name="title_description_icon_loading_data">Icon loading data</string>
+    <string name="title_daily_menu">Daily Menu</string>
+    <string name="title_image_food_detail_item">image food detail item</string>
+    <string name="title_other_food">OtherFood</string>
+    <string name="button_sort">Sort</string>
+    <string name="actionbar_title">ActionBar Title</string>
+    <string name="button_search_description">to search food</string>
+    <string name="title_home">Home</string>
+    <string name="title_collection">Collection</string>
+    <string name="title_cooking">Cooking</string>
 </resources>
