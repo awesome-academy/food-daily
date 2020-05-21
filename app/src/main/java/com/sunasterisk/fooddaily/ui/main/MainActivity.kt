@@ -1,13 +1,24 @@
 package com.sunasterisk.fooddaily.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.sunasterisk.fooddaily.R
+import com.sunasterisk.fooddaily.ui.base.BaseActivity
+import com.sunasterisk.fooddaily.ui.fragment.HomeFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override val layoutRes: Int = R.layout.activity_main
+
+    override fun initView() {
+        initFragment()
+    }
+
+    override fun initPresenter() {
+    }
+
+    private fun initFragment() {
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.frameContent, HomeFragment())
+            .commit()
     }
 }
