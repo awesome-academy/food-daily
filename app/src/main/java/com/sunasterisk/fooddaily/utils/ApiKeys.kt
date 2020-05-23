@@ -17,8 +17,8 @@ object ApiKeys {
 
     const val QUERY_KEYWORD = ""
 
-    const val DEFAULT_SEARCH_RESULT_LIMIT = 25
-    const val DEFAULT_RANDOM_RESULT_LIMIT = 50
+    const val DEFAULT_SEARCH_RESULT_LIMIT = 10
+    const val DEFAULT_RANDOM_RESULT_LIMIT = 25
     const val DEFAULT_NUTRITION = "false"
     const val DEFAULT_RESULT_LIMIT_LICENSE = "true"
 }

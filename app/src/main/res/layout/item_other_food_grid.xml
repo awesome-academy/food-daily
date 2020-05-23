@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/dp_152"
     android:layout_height="@dimen/dp_152"
     android:layout_margin="@dimen/dp_2"
     android:elevation="@dimen/dp_2"
     android:outlineProvider="bounds"
-    android:padding="@dimen/dp_8">
+    android:padding="@dimen/dp_4">
 
     <ImageView
-        android:id="@+id/imageFoodOtherStaggered"
+        android:id="@+id/imageFoodOtherGrid"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
@@ -20,15 +21,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textFoodOtherStaggered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/sp_24"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/imageOtherGridBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:background="@android:color/black"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textFoodOtherGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/OtherGridTextFoodName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageOtherGridClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:layout_margin="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageOtherGridBackground"
+        app:layout_constraintStart_toStartOf="@+id/imageOtherGridBackground"
+        app:srcCompat="@drawable/ic_clock"/>
+
+    <TextView
+        android:id="@+id/textOtherGridPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/OtherGridTextDescription"
+        android:layout_marginStart="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageOtherGridClock"
+        app:layout_constraintStart_toEndOf="@+id/imageOtherGridClock"
+        app:layout_constraintTop_toTopOf="@+id/imageOtherGridClock" />
+
+    <TextView
+        android:id="@+id/textOtherGridReadyMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/OtherGridTextDescription"
+        android:layout_margin="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageOtherGridBackground"
+        app:layout_constraintEnd_toEndOf="@+id/imageOtherGridBackground" />
+
+    <ImageView
+        android:id="@+id/imageOtherGridPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:layout_marginEnd="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="@+id/textOtherGridReadyMinutes"
+        app:layout_constraintEnd_toStartOf="@+id/textOtherGridReadyMinutes"
+        app:layout_constraintTop_toTopOf="@+id/textOtherGridReadyMinutes"
+        app:srcCompat="@drawable/ic_price"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

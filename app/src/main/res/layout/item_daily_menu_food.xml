@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/dp_250"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/dp_8"
@@ -20,11 +19,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:background="@android:color/black"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textFoodNameDailyMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/TextFoodName"
-        android:textSize="@dimen/sp_32"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,14 +42,18 @@
 
     <TextView
         android:id="@+id/textDailyMenuReadyMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/DailyMenuTextDescription"
         android:layout_marginStart="@dimen/dp_8"
         app:layout_constraintBottom_toBottomOf="@+id/imageClockDailyMenu"
         app:layout_constraintStart_toEndOf="@+id/imageClockDailyMenu"
-        app:layout_constraintTop_toTopOf="@+id/imageClockDailyMenu"/>
+        app:layout_constraintTop_toTopOf="@+id/imageClockDailyMenu" />
 
     <TextView
         android:id="@+id/textDailyMenuPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/DailyMenuTextDescription"
         android:layout_marginEnd="@dimen/dp_8"
         android:layout_marginBottom="@dimen/dp_8"
@@ -55,16 +69,16 @@
         android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_clock"/>
+        app:srcCompat="@drawable/ic_clock" />
 
     <ImageView
         android:id="@+id/imagePriceDailyMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_marginEnd="@dimen/dp_4"
         android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="@+id/textDailyMenuPrice"
         app:layout_constraintEnd_toStartOf="@+id/textDailyMenuPrice"
         app:layout_constraintTop_toTopOf="@+id/textDailyMenuPrice"
-        app:srcCompat="@drawable/ic_price"/>
+        app:srcCompat="@drawable/ic_price" />
 </androidx.constraintlayout.widget.ConstraintLayout>

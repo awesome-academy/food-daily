@@ -8,6 +8,8 @@
 
     <TextView
         android:id="@+id/textDailyMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/HomeScreenTextView"
         android:text="@string/title_daily_menu"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +34,7 @@
     </FrameLayout>
 
     <View
-        android:id="@+id/viewLine"
+        android:id="@+id/viewLineBetweenHomeScreen"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_1"
         android:background="@color/color_gray_500"
@@ -42,10 +44,12 @@
 
     <TextView
         android:id="@+id/textOtherFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/HomeScreenTextView"
         android:text="@string/title_other_food"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLineBetweenHomeScreen" />
 
     <FrameLayout
         android:id="@+id/frameOtherFood"
@@ -69,8 +73,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_16"
-        android:background="@android:color/transparent"
-        android:drawableStart="@drawable/ic_sort"
+        android:padding="@dimen/dp_4"
+        android:background="@drawable/button_state"
+        android:drawableStart="@drawable/ic_list"
         android:text="@string/button_sort"
         android:textColor="@color/color_gray_500"
         app:layout_constraintBottom_toBottomOf="@+id/textOtherFood"

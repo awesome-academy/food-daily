@@ -15,6 +15,8 @@
 
     <ImageView
         android:id="@+id/imageSplashBackground1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         style="@style/SplashScreenBackgroundImageView"
         android:contentDescription="@string/title_description_image_background_splash_1"
         android:src="@drawable/img_splash_screen"
@@ -25,6 +27,8 @@
 
     <ImageView
         android:id="@+id/imageBackground2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         style="@style/SplashScreenBackgroundImageView"
         android:contentDescription="@string/title_description_image_background_splash_2"
         android:src="@drawable/img_splash_screen"
@@ -49,6 +53,8 @@
     <TextView
         android:id="@+id/textLoadingData"
         style="@style/SplashScreenTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/title_loading_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

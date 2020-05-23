@@ -12,9 +12,6 @@ private const val JSON_KEY_SUMMARY = "summary"
 private const val JSON_KEY_IMAGE = "image"
 private const val JSON_KEY_INGREDIENTS = "extendedIngredients"
 private const val JSON_KEY_INSTRUCTIONS = "analyzedInstructions"
-private const val JSON_KEY_NAME = "name"
-private const val JSON_KEY_ORIGINAL = "original"
-private const val JSON_KEY_STEP = "step"
 private const val JSON_KEY_STEPS = "steps"
 
 @Parcelize
@@ -26,9 +23,8 @@ data class FoodDetail(
     var summary: String? = "",
     var imageUrl: String? = "",
     var ingredients: List<Ingredient>? = null,
-    var instructions: List<String>? = null
+    var instructions: List<Instruction>? = null
 ) : Parcelable {
-
     constructor(jsonObject: JSONObject) : this(
         id = jsonObject.optString(JSON_KEY_ID),
         title = jsonObject.optString(JSON_KEY_TITLE),
@@ -38,23 +34,24 @@ data class FoodDetail(
         imageUrl = jsonObject.optString(JSON_KEY_IMAGE),
         ingredients = mutableListOf<Ingredient>().apply {
             val ingredientList = jsonObject.optJSONArray(JSON_KEY_INGREDIENTS)
-            for (i in 0 until ingredientList.length()) {
-                val item = ingredientList.optJSONObject(i)
-                val id = item.optString(JSON_KEY_ID)
-                val name = item.optString(JSON_KEY_NAME)
-                val original = item.optString(JSON_KEY_ORIGINAL)
-                val ingredient = Ingredient(id, name, original)
-                add(ingredient)
+            if (ingredientList != null) {
+                for (i in 0 until ingredientList.length()) {
+                    add(Ingredient(ingredientList.optJSONObject(i)))
+                }
             }
         },
-        instructions = mutableListOf<String>().apply {
+        instructions = mutableListOf<Instruction>().apply {
             val instructionList = jsonObject.optJSONArray(JSON_KEY_INSTRUCTIONS)
-            val instruction = instructionList.optJSONObject(0)
-            val stepList = instruction.optJSONArray(JSON_KEY_STEPS)
-            for (i in 0 until stepList.length()) {
-                val stepItem = stepList.optJSONObject(i)
-                val step = stepItem.optString(JSON_KEY_STEP)
-                add(step)
+            if (instructionList != null) {
+                val instruction = instructionList.optJSONObject(0)
+                if (instruction != null) {
+                    val stepList = instruction.optJSONArray(JSON_KEY_STEPS)
+                    if (stepList != null) {
+                        for (i in 0 until stepList.length()) {
+                            add(Instruction(stepList.optJSONObject(i)))
+                        }
+                    }
+                }
             }
         }
     )

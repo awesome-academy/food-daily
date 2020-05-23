@@ -12,6 +12,7 @@ import com.sunasterisk.fooddaily.data.source.local.dao.PartyFoodDAOImpl
 import com.sunasterisk.fooddaily.data.source.local.database.FoodDailyDatabase
 import com.sunasterisk.fooddaily.data.source.remote.RecipeRemoteDataSource
 import com.sunasterisk.fooddaily.ui.base.BaseActivity
+import com.sunasterisk.fooddaily.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : BaseActivity(), SplashScreenContract.View {
@@ -38,6 +39,8 @@ class SplashScreenActivity : BaseActivity(), SplashScreenContract.View {
     }
 
     override fun onTransportDataToHome(data: List<FoodDetail>) {
+        val intentMain = MainActivity.getIntent(applicationContext, data)
+        startActivity(intentMain)
     }
 
     override fun showError(exception: Exception) {
