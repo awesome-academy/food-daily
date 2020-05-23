@@ -9,38 +9,57 @@
     </style>
 
     <style name="SplashScreenTextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/sp_24</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="SplashScreenBackgroundImageView">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
         <item name="android:scaleType">fitXY</item>
         <item name="android:adjustViewBounds">true</item>
     </style>
 
     <style name="HomeScreenTextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/sp_24</item>
         <item name="android:textColor">@color/color_amber_900</item>
         <item name="android:layout_marginTop">@dimen/dp_8</item>
     </style>
 
     <style name="DailyMenuTextDescription">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextFoodName">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_24</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="OtherListTextDescription">
         <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="TextFoodName">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="OtherListTextFoodName">
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
+
+    <style name="OtherGridTextDescription">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="OtherGridTextFoodName">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>
