@@ -14,8 +14,11 @@
     <string name="title_home">Home</string>
     <string name="title_collection">Collection</string>
     <string name="title_cooking">Cooking</string>
+    <string name="title_food_detail">Food Detail</string>
+    <string name="title_search">Search</string>
     <string name="value_time_required">\ minutes</string>
     <string name="notification_update_data">
         Data is updating. Please let us know if something goes wrong
     </string>
+    <string name="title_actionbar">ActionBar Title</string>
 </resources>

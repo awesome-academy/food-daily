@@ -9,18 +9,24 @@ import com.sunasterisk.fooddaily.R
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.ui.adapter.FoodAdapter
 import com.sunasterisk.fooddaily.ui.base.BaseFragment
+import com.sunasterisk.fooddaily.ui.fragment.food_detail.FoodDetailFragment
 import com.sunasterisk.fooddaily.utils.Constants
+import com.sunasterisk.fooddaily.utils.FoodType
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 const val COLUMN_LIMIT = 2
 
-class HomeFragment private constructor() : BaseFragment(), View.OnClickListener, HomeContract.View {
+class HomeFragment: BaseFragment(), View.OnClickListener, HomeContract.View {
 
     override val layoutRes: Int = R.layout.fragment_home
+    override val actionBarTitle: Int = R.string.title_home
+    override val buttonBackActionBarVisibility: Int = View.INVISIBLE
+    override val buttonSearchActionBarVisibility: Int = View.VISIBLE
+    override val buttonCollectionActionBarVisibility: Int = View.GONE
 
     private val homePresenter = HomePresenter(this)
-    private lateinit var otherFoods: List<FoodDetail>
+    private var otherFoods: List<FoodDetail>? = null
     private var isSortList: Boolean = false
 
     override fun getArgument() {
@@ -29,26 +35,9 @@ class HomeFragment private constructor() : BaseFragment(), View.OnClickListener,
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        homePresenter.createDailyMenu(otherFoods)
-        displayOtherFoods()
+        otherFoods?.let { homePresenter.createDailyMenu(it) }
+        displayOtherFoodList()
         buttonSortOtherFood.setOnClickListener(this)
-    }
-
-    private fun displayOtherFoods() {
-        recyclerViewOtherFood.adapter =
-            FoodAdapter(otherFoods, Constants.FOOD_TYPE_OTHER_LIST)
-        recyclerViewOtherFood.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        isSortList = true
-        recyclerViewOtherFood.setHasFixedSize(false)
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.buttonSortOtherFood -> {
-                handleDisplayOtherFood()
-            }
-        }
     }
 
     private fun handleDisplayOtherFood() {
@@ -63,30 +52,56 @@ class HomeFragment private constructor() : BaseFragment(), View.OnClickListener,
     }
 
     private fun displayOtherFoodList() {
-        recyclerViewOtherFood.adapter =
-            FoodAdapter(otherFoods, Constants.FOOD_TYPE_OTHER_LIST)
-        recyclerViewOtherFood.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerViewOtherFood.apply {
+            adapter = otherFoods?.let {
+                FoodAdapter(it, FoodType.FOOD_TYPE_OTHER_LIST) { food ->
+                    onFoodItemClick(food)
+                }
+            }
+            layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            setHasFixedSize(false)
+        }
         isSortList = true
     }
 
     private fun displayOtherFoodGrid() {
-        recyclerViewOtherFood.adapter =
-            FoodAdapter(otherFoods, Constants.FOOD_TYPE_OTHER_GRID)
-        recyclerViewOtherFood.layoutManager = GridLayoutManager(context, COLUMN_LIMIT)
+        recyclerViewOtherFood.apply {
+            adapter =
+                otherFoods?.let {
+                    FoodAdapter(it, FoodType.FOOD_TYPE_OTHER_GRID) { food ->
+                        onFoodItemClick(food)
+                    }
+                }
+            layoutManager = GridLayoutManager(context, COLUMN_LIMIT)
+        }
         isSortList = false
     }
 
     override fun showDailyMenu(dailyFoods: List<FoodDetail>) {
-        recyclerViewDailyMenu.adapter =
-            FoodAdapter(dailyFoods, Constants.FOOD_TYPE_DAILY_MENU)
-        recyclerViewDailyMenu.setHasFixedSize(false)
+        recyclerViewDailyMenu.apply {
+            adapter =
+                FoodAdapter(dailyFoods, FoodType.FOOD_TYPE_DAILY_MENU) { food ->
+                    onFoodItemClick(food)
+                }
+            setHasFixedSize(false)
+        }
+    }
+
+    private fun onFoodItemClick(food: FoodDetail) {
+        switchFragment(FoodDetailFragment.newInstance(food))
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.buttonSortOtherFood -> {
+                handleDisplayOtherFood()
+            }
+        }
     }
 
     companion object {
-        private var instance: HomeFragment? = null
-        fun getInstance(foods: List<FoodDetail>): HomeFragment =
-            instance ?: HomeFragment().apply {
+        fun newInstance(foods: List<FoodDetail>): HomeFragment = HomeFragment().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList(
                         Constants.EXTRA_FOOD_LIST,
@@ -96,4 +111,3 @@ class HomeFragment private constructor() : BaseFragment(), View.OnClickListener,
             }
     }
 }
-
