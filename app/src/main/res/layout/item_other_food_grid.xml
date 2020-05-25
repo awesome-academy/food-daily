@@ -54,7 +54,7 @@
         app:srcCompat="@drawable/ic_clock"/>
 
     <TextView
-        android:id="@+id/textOtherGridPrice"
+        android:id="@+id/textOtherGridReadyMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/OtherGridTextDescription"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageOtherGridClock" />
 
     <TextView
-        android:id="@+id/textOtherGridReadyMinutes"
+        android:id="@+id/textOtherGridPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/OtherGridTextDescription"
@@ -78,8 +78,8 @@
         android:layout_height="wrap_content"
         android:contentDescription="@null"
         android:layout_marginEnd="@dimen/dp_2"
-        app:layout_constraintBottom_toBottomOf="@+id/textOtherGridReadyMinutes"
-        app:layout_constraintEnd_toStartOf="@+id/textOtherGridReadyMinutes"
-        app:layout_constraintTop_toTopOf="@+id/textOtherGridReadyMinutes"
+        app:layout_constraintBottom_toBottomOf="@+id/textOtherGridPrice"
+        app:layout_constraintEnd_toStartOf="@+id/textOtherGridPrice"
+        app:layout_constraintTop_toTopOf="@+id/textOtherGridPrice"
         app:srcCompat="@drawable/ic_price"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

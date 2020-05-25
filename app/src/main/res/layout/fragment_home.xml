@@ -75,7 +75,7 @@
         android:layout_marginEnd="@dimen/dp_16"
         android:padding="@dimen/dp_4"
         android:background="@drawable/button_state"
-        android:drawableStart="@drawable/ic_list"
+        android:drawableStart="@drawable/ic_grid"
         android:text="@string/button_sort"
         android:textColor="@color/color_gray_500"
         app:layout_constraintBottom_toBottomOf="@+id/textOtherFood"
