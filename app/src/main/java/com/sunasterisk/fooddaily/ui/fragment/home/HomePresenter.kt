@@ -6,7 +6,7 @@ class HomePresenter (private val view: HomeContract.View): HomeContract.Presente
     override fun createDailyMenu(otherFoods: List<FoodDetail>) {
         view.showDailyMenu(
             mutableListOf<FoodDetail>().apply {
-                for (i in otherFoods.indices) if (i % 3 == 0) add(otherFoods[i])
+                for (food in otherFoods) if (otherFoods.indexOf(food) % 3 == 0) add(food)
             }
         )
     }

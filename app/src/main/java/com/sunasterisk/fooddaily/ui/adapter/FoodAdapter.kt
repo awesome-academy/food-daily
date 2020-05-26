@@ -9,7 +9,7 @@ import com.sunasterisk.fooddaily.R
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.utils.FoodType
 
-class FoodAdapter(
+class FoodAdapter (
     private val foodList: List<FoodDetail>,
     private val viewType: Int,
     private val onClickListener: (FoodDetail) -> Unit

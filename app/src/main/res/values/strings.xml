@@ -17,8 +17,26 @@
     <string name="title_food_detail">Food Detail</string>
     <string name="title_search">Search</string>
     <string name="value_time_required">\ minutes</string>
+    <string name="value_price_dollar">\ $</string>
     <string name="notification_update_data">
         Data is updating. Please let us know if something goes wrong
     </string>
     <string name="title_actionbar">ActionBar Title</string>
+    <string name="title_summary">Summary</string>
+    <string name="title_ingredients">Ingredients</string>
+    <string name="title_ready_minutes">ReadyMinutes</string>
+    <string name="title_estimate_price">Estimate Price</string>
+    <string name="title_start">Start</string>
+    <string name="title_food_name">Name</string>
+    <string name="title_updating">Updating…</string>
+    <string name="character_enter">\n</string>
+    <string name="character_minus">-\ </string>
+    <string name="title_choose_the_collection">Choose the Collection</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_family">Family</string>
+    <string name="title_party">Party</string>
+    <string name="title_congratulations">Congratulations!</string>
+    <string name="question_share_recipe">Are you want to share recipe\nto your friend?</string>
+    <string name="button_no_thank">No, thanks!</string>
+    <string name="button_share_on_facebook">Share on\nFacebook</string>
 </resources>

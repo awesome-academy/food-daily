@@ -41,7 +41,7 @@
     <ImageView
         android:id="@+id/imageFoodDaily"
         android:layout_width="@dimen/dp_290"
-        android:layout_height="@dimen/dp_250"
+        android:layout_height="@dimen/dp_248"
         android:adjustViewBounds="true"
         android:contentDescription="@string/title_description_image_food_daily"
         android:src="@drawable/img_food_detail"
