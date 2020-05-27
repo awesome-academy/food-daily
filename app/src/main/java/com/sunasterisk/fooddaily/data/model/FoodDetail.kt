@@ -14,6 +14,11 @@ private const val JSON_KEY_INGREDIENTS = "extendedIngredients"
 private const val JSON_KEY_INSTRUCTIONS = "analyzedInstructions"
 private const val JSON_KEY_STEPS = "steps"
 
+const val REQUIRED_TIME_UNIT = " minutes"
+const val PRICE_ESTIMATE_UNIT = " $"
+const val CHARACTER_MINUS = "- "
+const val CHARACTER_ENTER = "\n"
+
 @Parcelize
 data class FoodDetail(
     var id: String? = "",
@@ -55,4 +60,12 @@ data class FoodDetail(
             }
         }
     )
+
+    fun getRequiredTime(): String = readyMinutes + REQUIRED_TIME_UNIT
+
+    fun getPriceEstimate(): String = price + PRICE_ESTIMATE_UNIT
+
+    fun getIngredient(): String? = ingredients?.map {
+        CHARACTER_MINUS + it.original
+    }?.joinToString(CHARACTER_ENTER)
 }

@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".ui.main.MainActivity">
-
-    <include
-        android:id="@+id/actionbarMain"
-        layout="@layout/custom_action_bar" />
 
     <FrameLayout
         android:id="@+id/frameContent"
@@ -17,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionbarMain" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
@@ -30,15 +27,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation" />
-
-    <include
-        android:id="@+id/frameSearch"
-        layout="@layout/search_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/frameContent"
-        app:layout_constraintTop_toBottomOf="@+id/actionbarMain" />
 </androidx.constraintlayout.widget.ConstraintLayout>
