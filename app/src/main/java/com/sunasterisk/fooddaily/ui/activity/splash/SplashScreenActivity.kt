@@ -1,4 +1,4 @@
-package com.sunasterisk.fooddaily.ui.splash
+package com.sunasterisk.fooddaily.ui.activity.splash
 
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -11,8 +11,8 @@ import com.sunasterisk.fooddaily.data.source.local.dao.FavoriteFoodDAOImpl
 import com.sunasterisk.fooddaily.data.source.local.dao.PartyFoodDAOImpl
 import com.sunasterisk.fooddaily.data.source.local.database.FoodDailyDatabase
 import com.sunasterisk.fooddaily.data.source.remote.RecipeRemoteDataSource
+import com.sunasterisk.fooddaily.ui.activity.main.MainActivity
 import com.sunasterisk.fooddaily.ui.base.BaseActivity
-import com.sunasterisk.fooddaily.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : BaseActivity(), SplashScreenContract.View {

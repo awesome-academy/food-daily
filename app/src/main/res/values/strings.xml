@@ -39,4 +39,5 @@
     <string name="question_share_recipe">Are you want to share recipe\nto your friend?</string>
     <string name="button_no_thank">No, thanks!</string>
     <string name="button_share_on_facebook">Share on\nFacebook</string>
+    <string name="title_completed">Completed</string>
 </resources>

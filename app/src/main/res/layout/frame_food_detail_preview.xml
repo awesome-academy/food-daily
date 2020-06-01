@@ -3,22 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <include
-        android:id="@+id/actionBarFoodDetail"
-        layout="@layout/custom_action_bar" />
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    android:padding="@dimen/dp_8">
 
     <ScrollView
-        android:id="@+id/scrollFoodDetail"
+        android:id="@+id/scrollFoodDetailPreView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="@dimen/dp_8"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionBarFoodDetail">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,13 +62,14 @@
             <TextView
                 android:id="@+id/textSummaryDes"
                 style="@style/FoodDailyDescription"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:autoSizeMaxTextSize="@dimen/sp_32"
                 android:autoSizeMinTextSize="@dimen/sp_12"
                 android:autoSizeStepGranularity="@dimen/sp_2"
                 android:autoSizeTextType="uniform"
                 android:text="@string/title_summary"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSummaryTitle"
                 tools:targetApi="o" />
@@ -149,19 +147,4 @@
                 app:layout_constraintTop_toBottomOf="@+id/textPriceDes" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/buttonStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_16"
-        android:alpha="0.75"
-        android:background="@drawable/shape_button_start"
-        android:text="@string/title_start"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/sp_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

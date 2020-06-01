@@ -28,10 +28,24 @@ abstract class BaseFragment: Fragment() {
     abstract fun initActionBar()
     abstract fun getArgument()
 
-    fun switchFragment(fragment: Fragment) {
+    fun switchByReplaceFragment(fragment: Fragment) {
         activity?.supportFragmentManager
             ?.beginTransaction()
             ?.replace(R.id.frameContent, fragment)
+            ?.commit()
+    }
+
+    fun switchByAddFragment(fragment: Fragment) {
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.add(R.id.frameContent, fragment)
+            ?.commit()
+    }
+
+    fun removeFragment(fragment: Fragment) {
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.remove(fragment)
             ?.commit()
     }
 }

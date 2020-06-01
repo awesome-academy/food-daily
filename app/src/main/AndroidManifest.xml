@@ -5,16 +5,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor"
-        android:allowBackup="true">
-        <activity android:name="com.sunasterisk.fooddaily.ui.main.MainActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name="com.sunasterisk.fooddaily.ui.splash.SplashScreenActivity">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.sunasterisk.fooddaily.ui.activity.main.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.sunasterisk.fooddaily.ui.activity.food.FoodDetailActivity" />
+        <activity android:name="com.sunasterisk.fooddaily.ui.activity.splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,5 +24,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

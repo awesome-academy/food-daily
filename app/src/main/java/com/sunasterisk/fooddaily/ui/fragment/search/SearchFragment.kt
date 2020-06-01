@@ -12,13 +12,13 @@ class SearchFragment : BaseFragment() {
     }
 
     override fun getArgument() {
-        val searchKey = arguments?.getString(EXTRA_SEARCH_KEY)
+        val searchKey = arguments?.getString(ARGUMENT_SEARCH_KEY)
     }
 
     companion object {
-        private const val EXTRA_SEARCH_KEY = "com.sunasterisk.fooddaily.utils.Constants.EXTRA_SEARCH_KEY"
+        private const val ARGUMENT_SEARCH_KEY = "ARGUMENT_SEARCH_KEY"
         fun newInstance(searchKey: String): SearchFragment = SearchFragment().apply {
-            arguments = bundleOf(EXTRA_SEARCH_KEY to searchKey)
+            arguments = bundleOf(ARGUMENT_SEARCH_KEY to searchKey)
         }
     }
 }

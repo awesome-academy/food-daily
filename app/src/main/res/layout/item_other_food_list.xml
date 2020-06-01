@@ -5,6 +5,7 @@
     android:layout_height="@dimen/dp_120"
     android:layout_margin="@dimen/dp_2"
     android:elevation="@dimen/dp_2"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
     android:outlineProvider="bounds"
     android:padding="@dimen/dp_8">
 
@@ -21,9 +22,9 @@
 
     <TextView
         android:id="@+id/textFoodNameOtherList"
+        style="@style/OtherListTextFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/OtherListTextFoodName"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,9 +33,9 @@
 
     <TextView
         android:id="@+id/textOtherListReadyMinutes"
+        style="@style/OtherListTextDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/OtherListTextDescription"
         android:layout_marginStart="@dimen/dp_8"
         app:layout_constraintBottom_toBottomOf="@+id/imageClockOtherList"
         app:layout_constraintStart_toEndOf="@+id/imageClockOtherList"
@@ -42,9 +43,9 @@
 
     <TextView
         android:id="@+id/textOtherListPrice"
+        style="@style/OtherListTextDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/OtherListTextDescription"
         android:layout_marginStart="@dimen/dp_4"
         app:layout_constraintBottom_toBottomOf="@+id/imagePriceOtherList"
         app:layout_constraintStart_toEndOf="@+id/imagePriceOtherList"

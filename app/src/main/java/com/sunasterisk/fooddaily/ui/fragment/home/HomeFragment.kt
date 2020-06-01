@@ -9,25 +9,23 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunasterisk.fooddaily.R
 import com.sunasterisk.fooddaily.data.model.FoodDetail
+import com.sunasterisk.fooddaily.ui.activity.food.FoodDetailActivity
 import com.sunasterisk.fooddaily.ui.adapter.FoodAdapter
 import com.sunasterisk.fooddaily.ui.base.BaseFragment
-import com.sunasterisk.fooddaily.ui.fragment.food_detail.FoodDetailFragment
 import com.sunasterisk.fooddaily.ui.fragment.search.SearchFragment
-import com.sunasterisk.fooddaily.utils.Constants
 import com.sunasterisk.fooddaily.utils.FoodType
 import kotlinx.android.synthetic.main.custom_action_bar.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.search_view.*
 import java.util.*
 
-const val COLUMN_LIMIT = 2
+const val ITEM_GRID_WIDTH = 152
 
-class HomeFragment:
+class HomeFragment :
     BaseFragment(),
     View.OnClickListener,
     HomeContract.View,
-    SearchView.OnQueryTextListener
-{
+    SearchView.OnQueryTextListener {
 
     override val layoutRes: Int = R.layout.fragment_home
 
@@ -44,8 +42,7 @@ class HomeFragment:
     }
 
     override fun getArgument() {
-        otherFoods =
-            arguments?.getParcelableArrayList<FoodDetail>(Constants.EXTRA_FOOD_LIST) as ArrayList
+        otherFoods = arguments?.getParcelableArrayList(ARGUMENT_FOOD_LIST)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,7 +64,7 @@ class HomeFragment:
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         query?.let {
-            switchFragment(SearchFragment.newInstance(it))
+            switchByAddFragment(SearchFragment.newInstance(it))
         }
         return true
     }
@@ -78,7 +75,7 @@ class HomeFragment:
         when (v?.id) {
             R.id.buttonSortOtherFood -> displayOtherFood()
             R.id.buttonSearchActionBar -> controlDisplayFrameSearch()
-            R.id.frameSearch -> hideFrameSearch()
+            R.id.frameSearch -> controlDisplayFrameSearch()
         }
     }
 
@@ -115,13 +112,26 @@ class HomeFragment:
                         onFoodItemClick(food)
                     }
                 }
-            layoutManager = GridLayoutManager(context, COLUMN_LIMIT)
+            layoutManager = GridLayoutManager(context, columnFitScreen())
         }
         isSortList = false
     }
 
+    private fun columnFitScreen(): Int {
+        var value = 0
+        val displayMetrics = context?.resources?.displayMetrics
+        displayMetrics?.let {
+            val screenWidthDp = it.widthPixels / it.density
+            value = (screenWidthDp / (ITEM_GRID_WIDTH + 0.5)).toInt()
+        }
+        return value
+    }
+
     private fun onFoodItemClick(food: FoodDetail) {
-        switchFragment(FoodDetailFragment.newInstance(food))
+        startActivityForResult(
+            context?.let { FoodDetailActivity.getIntent(it, food) },
+            REQUEST_FOOD_DETAIL_ACTIVITY
+        )
     }
 
     private fun controlDisplayFrameSearch() {
@@ -146,13 +156,10 @@ class HomeFragment:
     }
 
     companion object {
+        private const val REQUEST_FOOD_DETAIL_ACTIVITY = 0
+        private const val ARGUMENT_FOOD_LIST = "ARGUMENT_FOOD_LIST"
         fun newInstance(foods: List<FoodDetail>): HomeFragment = HomeFragment().apply {
-                arguments = bundleOf().apply {
-                    putParcelableArrayList(
-                        Constants.EXTRA_FOOD_LIST,
-                        foods as ArrayList<out Parcelable>
-                    )
-                }
-            }
+            arguments = bundleOf(ARGUMENT_FOOD_LIST to foods as ArrayList<out Parcelable>)
+        }
     }
 }
