@@ -15,4 +15,5 @@
     <color name="color_background_button_favorite">#D50000</color>
     <color name="color_background_button_family">#FFD600</color>
     <color name="color_background_button_party">#2962FF</color>
+    <color name="color_shape_button">#B3000000</color>
 </resources>

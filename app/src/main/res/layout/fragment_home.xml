@@ -19,23 +19,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actionbarHome" />
 
-    <FrameLayout
-        android:id="@+id/frameDailyMenu"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDailyMenu"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_216"
         android:layout_marginTop="@dimen/dp_8"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDailyMenu">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewDailyMenu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_daily_menu_food" />
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textDailyMenu"
+        tools:listitem="@layout/item_daily_menu_food" />
 
     <View
         android:id="@+id/viewLineBetweenHomeScreen"
@@ -44,7 +38,7 @@
         android:background="@color/color_gray_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameDailyMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewDailyMenu" />
 
     <TextView
         android:id="@+id/textOtherFood"
@@ -55,28 +49,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewLineBetweenHomeScreen" />
 
-    <FrameLayout
-        android:id="@+id/frameOtherFood"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewOtherFood"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textOtherFood">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewOtherFood"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_other_food_list" />
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textOtherFood"
+        tools:listitem="@layout/item_other_food_list" />
 
     <Button
         android:id="@+id/buttonSortOtherFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_8"
         android:background="@drawable/button_state"
         android:drawableStart="@drawable/ic_grid"
         android:padding="@dimen/dp_4"

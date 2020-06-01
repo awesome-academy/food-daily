@@ -65,7 +65,7 @@ data class FoodDetail(
 
     fun getPriceEstimate(): String = price + PRICE_ESTIMATE_UNIT
 
-    fun getIngredient(): String? = ingredients?.map {
+    fun getIngredient(): String? = ingredients?.joinToString(CHARACTER_ENTER) {
         CHARACTER_MINUS + it.original
-    }?.joinToString(CHARACTER_ENTER)
+    }
 }

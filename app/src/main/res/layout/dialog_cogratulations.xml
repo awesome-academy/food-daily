@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_216"
+    android:background="@drawable/shape_search_view"
     android:paddingStart="@dimen/dp_4"
     android:paddingTop="@dimen/dp_8"
     android:paddingEnd="@dimen/dp_4"
-    android:paddingBottom="@dimen/dp_4"
-    android:background="@drawable/shape_search_view">
+    android:paddingBottom="@dimen/dp_4">
 
     <TextView
         android:id="@+id/textCongratulations"
@@ -43,11 +43,12 @@
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginEnd="@dimen/dp_56"
         android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_cancel"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="@string/button_no_thank"
-        android:textSize="@dimen/sp_16"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:drawableStart="@drawable/ic_cancel"
+        android:textSize="@dimen/sp_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonShareOnFacebook"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,11 +60,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_8"
         android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_facebook"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="@string/button_share_on_facebook"
-        android:textSize="@dimen/sp_12"
         android:textAllCaps="false"
         android:textColor="@android:color/holo_blue_dark"
-        android:drawableStart="@drawable/ic_facebook"
+        android:textSize="@dimen/sp_12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonNoThank" />
 </androidx.constraintlayout.widget.ConstraintLayout>
