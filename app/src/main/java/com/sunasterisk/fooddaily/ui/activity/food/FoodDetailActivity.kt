@@ -6,6 +6,12 @@ import android.content.Intent
 import android.view.View
 import androidx.core.text.HtmlCompat
 import androidx.viewpager.widget.ViewPager
+import android.graphics.drawable.BitmapDrawable
+import com.facebook.CallbackManager
+import com.facebook.share.model.ShareHashtag
+import com.facebook.share.model.SharePhoto
+import com.facebook.share.model.SharePhotoContent
+import com.facebook.share.widget.ShareDialog
 import com.sunasterisk.fooddaily.R
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.repository.RecipeRepository
@@ -37,6 +43,8 @@ class FoodDetailActivity :
     private var isShowFrameInstruction = false
     private var currentPositionPage = 0
     private var instructionAdapter: InstructionAdapter? = null
+    private var callbackManager: CallbackManager? = null
+    private var shareDialog: ShareDialog? = null
 
     override fun initPresenter() {
         val foodDailyDatabase = FoodDailyDatabase.getInstance(applicationContext)
@@ -49,6 +57,8 @@ class FoodDetailActivity :
     }
 
     override fun initView() {
+        callbackManager = CallbackManager.Factory.create()
+        shareDialog = ShareDialog(this)
         food = intent.getParcelableExtra(EXTRA_FOOD_ITEM)
         food?.let { showFoodDetail(it) }
         initActionBar()
@@ -144,7 +154,20 @@ class FoodDetailActivity :
     }
 
     private fun shareRecipeOnFacebook() {
-        //TODO share recipe on facebook
+        val drawable = imageFoodDetail.drawable as BitmapDrawable
+        val bitmap = drawable.bitmap
+        val photo: SharePhoto = SharePhoto.Builder()
+            .setBitmap(bitmap)
+            .build()
+        val sharePhotoContent: SharePhotoContent = SharePhotoContent.Builder()
+            .addPhoto(photo)
+            .setShareHashtag(ShareHashtag.Builder()
+                .setHashtag(TITLE_HASH_TAG)
+                .build())
+            .build()
+        if (ShareDialog.canShow(SharePhotoContent::class.java)) {
+            shareDialog?.show(sharePhotoContent)
+        }
     }
 
     private fun showDialogChooseCollection() {
@@ -250,6 +273,7 @@ class FoodDetailActivity :
 
     companion object {
 
+        private const val TITLE_HASH_TAG = "#food_daily"
         private const val EXTRA_FOOD_ITEM =
             "com.sunasterisk.fooddaily.utils.Constants.EXTRA_FOOD_ITEM"
 
