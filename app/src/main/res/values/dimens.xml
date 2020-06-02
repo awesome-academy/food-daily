@@ -15,10 +15,8 @@
     <dimen name="dp_32">32dp</dimen>
     <dimen name="dp_40">40dp</dimen>
     <dimen name="dp_56">56dp</dimen>
-    <dimen name="dp_80">80dp</dimen>
     <dimen name="dp_120">120dp</dimen>
     <dimen name="dp_152">152dp</dimen>
-    <dimen name="dp_160">160dp</dimen>
     <dimen name="dp_216">216dp</dimen>
     <dimen name="dp_248">248dp</dimen>
     <dimen name="dp_290">290dp</dimen>

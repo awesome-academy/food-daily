@@ -1,15 +1,12 @@
 package com.sunasterisk.fooddaily.utils
 
+import com.sunasterisk.fooddaily.data.model.FoodDetail
+
 object DatabaseKeys {
-    const val DATABASE_NAME = "food-daily-database"
+    const val DATABASE_NAME = "food-daily-database-v.0.1"
     const val DATABASE_VERSION = 1
 
-    const val TABLE_FAVORITE = "tbl_favorite"
-    const val TABLE_PARTY = "tbl_party_drink"
-    const val TABLE_FAMILY = "tbl_family"
-
-    const val FAVORITE_ID = "favorite_id"
-    const val PARTY_ID = "favorite_id"
-    const val FAMILY_ID = "favorite_id"
-    const val FOOD_ID = "food_id"
+    const val KEY_IN_COLLECTION = "1"
+    const val KEY_NOT_IN_COLLECTION = "1"
+    const val KEY_WHERE_FOOD_ID = "${FoodDetail.ID}="
 }

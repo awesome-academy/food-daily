@@ -8,6 +8,11 @@ import androidx.core.text.HtmlCompat
 import androidx.viewpager.widget.ViewPager
 import com.sunasterisk.fooddaily.R
 import com.sunasterisk.fooddaily.data.model.FoodDetail
+import com.sunasterisk.fooddaily.data.repository.RecipeRepository
+import com.sunasterisk.fooddaily.data.source.local.RecipeLocalDataSource
+import com.sunasterisk.fooddaily.data.source.local.dao.FoodDAOImpl
+import com.sunasterisk.fooddaily.data.source.local.database.FoodDailyDatabase
+import com.sunasterisk.fooddaily.data.source.remote.RecipeRemoteDataSource
 import com.sunasterisk.fooddaily.ui.adapter.InstructionAdapter
 import com.sunasterisk.fooddaily.ui.base.BaseActivity
 import com.sunasterisk.fooddaily.ui.fragment.instruction.InstructionFragment
@@ -26,12 +31,22 @@ class FoodDetailActivity :
 
     override val layoutRes: Int = R.layout.activity_food_detail
 
+    private var foodDetailPresenter: FoodDetailPresenter? = null
+
     private var food: FoodDetail? = null
     private var isShowFrameInstruction = false
     private var currentPositionPage = 0
     private var instructionAdapter: InstructionAdapter? = null
 
-    override fun initPresenter() {}
+    override fun initPresenter() {
+        val foodDailyDatabase = FoodDailyDatabase.getInstance(applicationContext)
+        val foodDAO = FoodDAOImpl.getInstance(foodDailyDatabase)
+        val recipeRepository = RecipeRepository.getInstance(
+            RecipeRemoteDataSource.getInstance(),
+            RecipeLocalDataSource.getInstance(foodDAO)
+        )
+        foodDetailPresenter = FoodDetailPresenter(recipeRepository)
+    }
 
     override fun initView() {
         food = intent.getParcelableExtra(EXTRA_FOOD_ITEM)
@@ -139,15 +154,15 @@ class FoodDetailActivity :
             show()
             buttonCloseChooseDialog.setOnClickListener { dismiss() }
             buttonFavorite.setOnClickListener {
-                addFoodToFavorite()
+                food?.let(::addFoodToFavorite)
                 dismiss()
             }
             buttonFamily.setOnClickListener {
-                addFoodToFamily()
+                food?.let(::addFoodToFamily)
                 dismiss()
             }
             buttonParty.setOnClickListener {
-                addFoodToParty()
+                food?.let(::addFoodToParty)
                 dismiss()
             }
         }
@@ -194,16 +209,16 @@ class FoodDetailActivity :
         }
     }
 
-    private fun addFoodToParty() {
-        //TODO add food to party collection
+    private fun addFoodToParty(food: FoodDetail) {
+        foodDetailPresenter?.addToParty(food)
     }
 
-    private fun addFoodToFamily() {
-        //TODO add food to family collection
+    private fun addFoodToFamily(food: FoodDetail) {
+        foodDetailPresenter?.addToFamily(food)
     }
 
-    private fun addFoodToFavorite() {
-        //TODO add food to favorite collection
+    private fun addFoodToFavorite(food: FoodDetail) {
+        foodDetailPresenter?.addToFavorite(food)
     }
 
     private fun displayButtonNav() {

@@ -3,7 +3,6 @@ package com.sunasterisk.fooddaily.ui.activity.splash
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.repository.RecipeRepository
 import com.sunasterisk.fooddaily.data.source.OnLoadedCallback
-import java.lang.Exception
 
 class SplashScreenPresenter(
     private val splashView: SplashScreenContract.View,

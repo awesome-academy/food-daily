@@ -1,6 +1,10 @@
 package com.sunasterisk.fooddaily.data.model
 
+import android.content.ContentValues
+import android.database.Cursor
 import android.os.Parcelable
+import com.sunasterisk.fooddaily.utils.DatabaseKeys
+import com.sunasterisk.fooddaily.utils.getData
 import kotlinx.android.parcel.Parcelize
 import org.json.JSONObject
 
@@ -61,11 +65,44 @@ data class FoodDetail(
         }
     )
 
+    constructor(cursor: Cursor) : this(
+        id = cursor.getData(ID),
+        title = cursor.getData(TITLE),
+        price = cursor.getData(PRICE),
+        readyMinutes = cursor.getData(READY_MINUTES),
+        summary = cursor.getData(SUMMARY),
+        imageUrl = cursor.getData(IMAGE_URL)
+    )
+
     fun getRequiredTime(): String = readyMinutes + REQUIRED_TIME_UNIT
 
     fun getPriceEstimate(): String = price + PRICE_ESTIMATE_UNIT
 
     fun getIngredient(): String? = ingredients?.joinToString(CHARACTER_ENTER) {
         CHARACTER_MINUS + it.original
+    }
+
+    fun getContentValues(collectionName: String): ContentValues =
+        ContentValues().apply {
+            put(ID, id)
+            put(TITLE, title)
+            put(PRICE, price)
+            put(READY_MINUTES, readyMinutes)
+            put(SUMMARY, summary)
+            put(IMAGE_URL, imageUrl)
+            put(collectionName, DatabaseKeys.KEY_IN_COLLECTION)
+        }
+
+    companion object {
+        const val TABLE_NAME = "tbl_food"
+        const val ID = "food_id"
+        const val TITLE = "food_title"
+        const val PRICE = "food_price"
+        const val READY_MINUTES = "food_ready_minutes"
+        const val SUMMARY = "food_summary"
+        const val IMAGE_URL = "food_image_url"
+        const val TYPE_FAVORITE = "is_favorite"
+        const val TYPE_FAMILY = "is_family"
+        const val TYPE_PARTY = "is_party"
     }
 }
