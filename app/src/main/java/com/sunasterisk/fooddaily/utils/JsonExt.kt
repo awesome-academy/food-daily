@@ -17,4 +17,3 @@ fun JSONObject.getImageIngredientName(): String =
         ?.optJSONObject(0)
         ?.optString(JSON_KEY_IMAGE)
         ?: ""
-

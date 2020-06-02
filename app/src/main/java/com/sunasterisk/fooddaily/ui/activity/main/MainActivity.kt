@@ -58,9 +58,6 @@ class MainActivity : BaseActivity() {
 
         fun getIntent(context: Context, foods: List<FoodDetail>): Intent =
             Intent(context, MainActivity::class.java)
-                .putParcelableArrayListExtra(
-                    EXTRA_FOOD_LIST,
-                    ArrayList(foods)
-                )
+                .putParcelableArrayListExtra(EXTRA_FOOD_LIST, ArrayList(foods))
     }
 }

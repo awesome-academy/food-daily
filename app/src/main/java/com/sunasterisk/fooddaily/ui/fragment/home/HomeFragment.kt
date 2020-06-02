@@ -1,7 +1,6 @@
 package com.sunasterisk.fooddaily.ui.fragment.home
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
@@ -17,7 +16,7 @@ import com.sunasterisk.fooddaily.utils.FoodType
 import kotlinx.android.synthetic.main.custom_action_bar.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.search_view.*
-import java.util.*
+import kotlin.collections.ArrayList
 
 const val ITEM_GRID_WIDTH = 152
 
@@ -159,7 +158,7 @@ class HomeFragment :
         private const val REQUEST_FOOD_DETAIL_ACTIVITY = 0
         private const val ARGUMENT_FOOD_LIST = "ARGUMENT_FOOD_LIST"
         fun newInstance(foods: List<FoodDetail>): HomeFragment = HomeFragment().apply {
-            arguments = bundleOf(ARGUMENT_FOOD_LIST to foods as ArrayList<out Parcelable>)
+            arguments = bundleOf(ARGUMENT_FOOD_LIST to ArrayList(foods))
         }
     }
 }

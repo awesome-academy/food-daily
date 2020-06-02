@@ -6,9 +6,7 @@ import com.sunasterisk.fooddaily.R
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.repository.RecipeRepository
 import com.sunasterisk.fooddaily.data.source.local.RecipeLocalDataSource
-import com.sunasterisk.fooddaily.data.source.local.dao.FamilyFoodDAOImpl
-import com.sunasterisk.fooddaily.data.source.local.dao.FavoriteFoodDAOImpl
-import com.sunasterisk.fooddaily.data.source.local.dao.PartyFoodDAOImpl
+import com.sunasterisk.fooddaily.data.source.local.dao.FoodDAOImpl
 import com.sunasterisk.fooddaily.data.source.local.database.FoodDailyDatabase
 import com.sunasterisk.fooddaily.data.source.remote.RecipeRemoteDataSource
 import com.sunasterisk.fooddaily.ui.activity.main.MainActivity
@@ -22,12 +20,10 @@ class SplashScreenActivity : BaseActivity(), SplashScreenContract.View {
 
     override fun initPresenter() {
         val foodDailyDatabase = FoodDailyDatabase.getInstance(applicationContext)
-        val favoriteFoodDAO = FavoriteFoodDAOImpl.getInstance(foodDailyDatabase)
-        val partyFoodDAO = PartyFoodDAOImpl.getInstance(foodDailyDatabase)
-        val familyFoodDAO = FamilyFoodDAOImpl.getInstance(foodDailyDatabase)
+        val foodDAO = FoodDAOImpl.getInstance(foodDailyDatabase)
         val recipeRepository = RecipeRepository.getInstance(
             RecipeRemoteDataSource.getInstance(),
-            RecipeLocalDataSource.getInstance(favoriteFoodDAO, partyFoodDAO, familyFoodDAO)
+            RecipeLocalDataSource.getInstance(foodDAO)
         )
         splashPresenter = SplashScreenPresenter(this, recipeRepository)
         splashPresenter?.getRandomFoods()

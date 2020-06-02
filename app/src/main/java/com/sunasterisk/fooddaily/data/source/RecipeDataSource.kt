@@ -7,8 +7,14 @@ interface RecipeDataSource {
         fun getRandomRecipes(callback: OnLoadedCallback<List<FoodDetail>>)
     }
     interface Local {
-        fun getAllFavoriteFoods(callback: OnLoadedCallback<List<String>>)
-        fun getAllPartyFoods(callback: OnLoadedCallback<List<String>>)
-        fun getAllFamilyFoods(callback: OnLoadedCallback<List<String>>)
+        fun getAllFavoriteFoods(callback: OnLoadedCallback<List<FoodDetail>>)
+        fun getAllPartyFoods(callback: OnLoadedCallback<List<FoodDetail>>)
+        fun getAllFamilyFoods(callback: OnLoadedCallback<List<FoodDetail>>)
+        fun addToFavorite(foodDetail: FoodDetail)
+        fun addToFamily(foodDetail: FoodDetail)
+        fun addToParty(foodDetail: FoodDetail)
+        fun deleteFoodFromFavorite(foodDetail: FoodDetail)
+        fun deleteFoodFromFamily(foodDetail: FoodDetail)
+        fun deleteFoodFromParty(foodDetail: FoodDetail)
     }
 }

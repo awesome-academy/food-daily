@@ -1,7 +1,6 @@
 package com.sunasterisk.fooddaily.ui.activity.splash
 
 import com.sunasterisk.fooddaily.data.model.FoodDetail
-import kotlin.Exception
 
 interface SplashScreenContract {
     interface View {

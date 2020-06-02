@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/dp_1"
-        android:background="@drawable/shape_layout_radius">
+        android:background="@drawable/shape_rectangle_radius">
 
         <ImageView
             android:id="@+id/imageFoodOtherGrid"

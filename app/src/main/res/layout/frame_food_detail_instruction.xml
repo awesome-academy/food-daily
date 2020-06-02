@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_circle_button_previous"
         android:contentDescription="@null"
-        android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_previous"
         android:visibility="gone"

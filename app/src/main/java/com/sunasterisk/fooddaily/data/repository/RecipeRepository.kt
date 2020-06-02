@@ -13,16 +13,40 @@ class RecipeRepository private constructor(
         remoteDataSource.getRandomRecipes(callback)
     }
 
-    override fun getAllFavoriteFoods(callback: OnLoadedCallback<List<String>>) {
+    override fun getAllFavoriteFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
         localDataSource.getAllFavoriteFoods(callback)
     }
 
-    override fun getAllPartyFoods(callback: OnLoadedCallback<List<String>>) {
+    override fun getAllPartyFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
         localDataSource.getAllPartyFoods(callback)
     }
 
-    override fun getAllFamilyFoods(callback: OnLoadedCallback<List<String>>) {
+    override fun getAllFamilyFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
         localDataSource.getAllFamilyFoods(callback)
+    }
+
+    override fun addToFavorite(foodDetail: FoodDetail) {
+        localDataSource.addToFavorite(foodDetail)
+    }
+
+    override fun addToFamily(foodDetail: FoodDetail) {
+        localDataSource.addToFamily(foodDetail)
+    }
+
+    override fun addToParty(foodDetail: FoodDetail) {
+        localDataSource.addToParty(foodDetail)
+    }
+
+    override fun deleteFoodFromFavorite(foodDetail: FoodDetail) {
+
+    }
+
+    override fun deleteFoodFromFamily(foodDetail: FoodDetail) {
+
+    }
+
+    override fun deleteFoodFromParty(foodDetail: FoodDetail) {
+
     }
 
     companion object {
