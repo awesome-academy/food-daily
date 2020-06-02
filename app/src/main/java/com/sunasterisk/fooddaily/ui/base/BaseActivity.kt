@@ -3,6 +3,7 @@ package com.sunasterisk.fooddaily.ui.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.facebook.FacebookSdk
 import com.sunasterisk.fooddaily.R
 
 abstract class BaseActivity: AppCompatActivity() {
@@ -11,6 +12,7 @@ abstract class BaseActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FacebookSdk.sdkInitialize(this.applicationContext)
         setContentView(layoutRes)
         initView()
         initPresenter()

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">FoodDaily</string>
+    <string name="facebook_app_id">670857986812648</string>
+    <string name="facebook_login_protocol_scheme">fb670857986812648</string>
     <string name="title_loading_data">Loading data…</string>
     <string name="title_error">Error: </string>
     <string name="title_description_image_background_splash_1">SplashScreen background</string>
