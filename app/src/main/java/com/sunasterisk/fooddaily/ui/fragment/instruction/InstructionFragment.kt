@@ -23,6 +23,10 @@ class InstructionFragment : BaseFragment() {
         instruction = arguments?.getParcelable(ARGUMENT_INSTRUCTION_ITEM)
     }
 
+    override fun initPresenter() {
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         displayStep()

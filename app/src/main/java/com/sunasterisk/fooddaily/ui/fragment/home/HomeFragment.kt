@@ -44,6 +44,10 @@ class HomeFragment :
         otherFoods = arguments?.getParcelableArrayList(ARGUMENT_FOOD_LIST)
     }
 
+    override fun initPresenter() {
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         otherFoods?.let { homePresenter.createDailyMenu(it) }
@@ -54,8 +58,10 @@ class HomeFragment :
     override fun showDailyMenu(dailyFoods: List<FoodDetail>) {
         recyclerViewDailyMenu.apply {
             adapter =
-                FoodAdapter(dailyFoods, FoodType.FOOD_TYPE_DAILY_MENU) { food ->
+                FoodAdapter(FoodType.FOOD_TYPE_DAILY_MENU) { food ->
                     onFoodItemClick(food)
+                }.apply {
+                    updateData(dailyFoods)
                 }
             setHasFixedSize(false)
         }
@@ -92,8 +98,10 @@ class HomeFragment :
     private fun displayOtherFoodList() {
         recyclerViewOtherFood.apply {
             adapter = otherFoods?.let {
-                FoodAdapter(it, FoodType.FOOD_TYPE_OTHER_LIST) { food ->
+                FoodAdapter(FoodType.FOOD_TYPE_OTHER_LIST) { food ->
                     onFoodItemClick(food)
+                }.apply {
+                    updateData(it)
                 }
             }
             layoutManager =
@@ -107,8 +115,10 @@ class HomeFragment :
         recyclerViewOtherFood.apply {
             adapter =
                 otherFoods?.let {
-                    FoodAdapter(it, FoodType.FOOD_TYPE_OTHER_GRID) { food ->
+                    FoodAdapter(FoodType.FOOD_TYPE_OTHER_GRID) { food ->
                         onFoodItemClick(food)
+                    }.apply {
+                        updateData(it)
                     }
                 }
             layoutManager = GridLayoutManager(context, columnFitScreen())
