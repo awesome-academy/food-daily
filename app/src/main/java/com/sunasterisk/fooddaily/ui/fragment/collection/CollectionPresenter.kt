@@ -12,7 +12,7 @@ class CollectionPresenter(
     override fun getAllFavoriteFoods() {
         recipeRepository.getAllFavoriteFoods(object : OnLoadedCallback<List<FoodDetail>>{
             override fun onSuccess(data: List<FoodDetail>) {
-                view.showFavoriteFoods(data)
+                view.createFavoriteFoods(data)
             }
 
             override fun onFailure(exception: Exception) {
@@ -24,7 +24,7 @@ class CollectionPresenter(
     override fun getAllFamilyFoods() {
         recipeRepository.getAllFamilyFoods(object : OnLoadedCallback<List<FoodDetail>>{
             override fun onSuccess(data: List<FoodDetail>) {
-                view.showFamilyFoods(data)
+                view.createFamilyFoods(data)
             }
 
             override fun onFailure(exception: Exception) {
@@ -36,7 +36,7 @@ class CollectionPresenter(
     override fun getAllPartyFoods() {
         recipeRepository.getAllPartyFoods(object : OnLoadedCallback<List<FoodDetail>>{
             override fun onSuccess(data: List<FoodDetail>) {
-                view.showPartyFoods(data)
+                view.createPartyFoods(data)
             }
 
             override fun onFailure(exception: Exception) {

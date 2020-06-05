@@ -15,6 +15,10 @@ class CookingFragment: BaseFragment() {
 
     }
 
+    override fun initPresenter() {
+
+    }
+
     companion object {
         fun newInstance(): CookingFragment = CookingFragment()
     }

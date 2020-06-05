@@ -15,6 +15,10 @@ class SearchFragment : BaseFragment() {
         val searchKey = arguments?.getString(ARGUMENT_SEARCH_KEY)
     }
 
+    override fun initPresenter() {
+
+    }
+
     companion object {
         private const val ARGUMENT_SEARCH_KEY = "ARGUMENT_SEARCH_KEY"
         fun newInstance(searchKey: String): SearchFragment = SearchFragment().apply {

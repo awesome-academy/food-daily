@@ -10,10 +10,11 @@ import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.utils.FoodType
 
 class FoodAdapter (
-    private val foodList: List<FoodDetail>,
     private val viewType: Int,
     private val onClickListener: (FoodDetail) -> Unit
 ) : RecyclerView.Adapter<FoodViewHolder>() {
+
+    private val foodList = mutableListOf<FoodDetail>()
 
     override fun getItemViewType(position: Int): Int = viewType
 
@@ -46,4 +47,10 @@ class FoodAdapter (
 
     private fun inflateView(context: Context, layoutRes: Int, parent: ViewGroup): View =
         LayoutInflater.from(context).inflate(layoutRes, parent, false)
+
+    fun updateData(newItems: List<FoodDetail>) {
+        if (foodList.isNotEmpty()) foodList.clear()
+        foodList.addAll(newItems)
+        notifyDataSetChanged()
+    }
 }
