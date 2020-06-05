@@ -72,4 +72,5 @@
         app:layout_constraintStart_toEndOf="@+id/textOtherListReadyMinutes"
         app:layout_constraintTop_toTopOf="@+id/textOtherListReadyMinutes"
         app:srcCompat="@drawable/ic_price" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

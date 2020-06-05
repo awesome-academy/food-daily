@@ -1,12 +1,12 @@
 package com.sunasterisk.fooddaily.data.source.local.base
 
+import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.model.Ingredient
 import com.sunasterisk.fooddaily.data.model.Instruction
 import com.sunasterisk.fooddaily.utils.DatabaseKeys
 import com.sunasterisk.fooddaily.utils.getData
-
 
 /**
  * For FoodDAO & CookingDAO (coming soon) use

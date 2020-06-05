@@ -14,22 +14,19 @@ class RecipeLocalDataSource private constructor(
 
     override fun getAllFavoriteFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
         LocalAsyncTask(object: LocalDataHandler<String, List<FoodDetail>> {
-            override fun execute(params: String): List<FoodDetail> =
-                foodDAO.getAllFavoriteFoods()
+            override fun execute(params: String): List<FoodDetail> = foodDAO.getAllFavoriteFoods()
         }, callback).execute(Constants.EMPTY_PARAMS)
     }
 
     override fun getAllPartyFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
         LocalAsyncTask(object: LocalDataHandler<String, List<FoodDetail>> {
-            override fun execute(params: String): List<FoodDetail> =
-                foodDAO.getAllPartyFoods()
+            override fun execute(params: String): List<FoodDetail> = foodDAO.getAllPartyFoods()
         }, callback).execute(Constants.EMPTY_PARAMS)
     }
 
     override fun getAllFamilyFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
         LocalAsyncTask(object: LocalDataHandler<String, List<FoodDetail>> {
-            override fun execute(params: String): List<FoodDetail> =
-                foodDAO.getAllFamilyFoods()
+            override fun execute(params: String): List<FoodDetail> = foodDAO.getAllFamilyFoods()
         }, callback).execute(Constants.EMPTY_PARAMS)
     }
 
