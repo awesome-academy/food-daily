@@ -88,10 +88,12 @@ class CollectionFragment : BaseFragment(), CollectionContract.View {
     }
 
     private fun onFoodItemClick(food: FoodDetail) {
-        startActivityForResult(
-            context?.let { FoodDetailActivity.getIntent(it, food) },
-            REQUEST_FOOD_DETAIL_ACTIVITY
-        )
+        activity?.let {
+            startActivityForResult(
+                FoodDetailActivity.getIntent(it, food),
+                FoodDetailActivity.REQUEST_FOOD_DETAIL_ACTIVITY
+            )
+        }
     }
 
     private fun initCollection() {
@@ -117,7 +119,6 @@ class CollectionFragment : BaseFragment(), CollectionContract.View {
     }
 
     companion object {
-        private const val REQUEST_FOOD_DETAIL_ACTIVITY = 1
         fun newInstance(): CollectionFragment = CollectionFragment()
     }
 }

@@ -1,12 +1,13 @@
 package com.sunasterisk.fooddaily.ui.activity.food
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import androidx.core.text.HtmlCompat
 import androidx.viewpager.widget.ViewPager
-import android.graphics.drawable.BitmapDrawable
 import com.facebook.CallbackManager
 import com.facebook.share.model.ShareHashtag
 import com.facebook.share.model.SharePhoto
@@ -40,7 +41,7 @@ class FoodDetailActivity :
     private var foodDetailPresenter: FoodDetailPresenter? = null
 
     private var food: FoodDetail? = null
-    private var isShowFrameInstruction = false
+    private var isCompletedCooking = false
     private var currentPositionPage = 0
     private var instructionAdapter: InstructionAdapter? = null
     private var callbackManager: CallbackManager? = null
@@ -93,8 +94,8 @@ class FoodDetailActivity :
         when (v?.id) {
             R.id.buttonBackActionBar -> backToHomeScreen()
             R.id.buttonCollectionActionBar -> showDialogChooseCollection()
-            R.id.buttonStart -> controlDisplayInstruction()
-            R.id.buttonCompleted -> showDialogCongratulations()
+            R.id.buttonStart -> controlStartCooking()
+            R.id.buttonCompleted -> controlCompletedCooking()
             R.id.buttonPreviousNavigation -> goToPreviousPage()
             R.id.buttonNextNavigation -> goToNextPage()
         }
@@ -140,6 +141,12 @@ class FoodDetailActivity :
         }
     }
 
+    private fun controlCompletedCooking() {
+        food?.let { foodDetailPresenter?.deleteFoodFromCooking(it) }
+        isCompletedCooking  = true
+        showDialogCongratulations()
+    }
+
     private fun showDialogCongratulations() {
         Dialog(this, R.style.DialogTheme).run {
             setCancelable(false)
@@ -161,9 +168,11 @@ class FoodDetailActivity :
             .build()
         val sharePhotoContent: SharePhotoContent = SharePhotoContent.Builder()
             .addPhoto(photo)
-            .setShareHashtag(ShareHashtag.Builder()
-                .setHashtag(TITLE_HASH_TAG)
-                .build())
+            .setShareHashtag(
+                ShareHashtag.Builder()
+                    .setHashtag(TITLE_HASH_TAG)
+                    .build()
+            )
             .build()
         if (ShareDialog.canShow(SharePhotoContent::class.java)) {
             shareDialog?.show(sharePhotoContent)
@@ -191,22 +200,19 @@ class FoodDetailActivity :
         }
     }
 
-    private fun backToHomeScreen() = finish()
-
-    private fun controlDisplayInstruction() {
-        isShowFrameInstruction = if (isShowFrameInstruction) {
-            showFramePreview()
-            false
-        } else {
-            showFrameInstruction()
-            true
+    private fun backToHomeScreen() {
+        if (isCompletedCooking) {
+            setResult(
+                Activity.RESULT_OK,
+                Intent().putExtra(RESULT_FOOD_ID, food)
+            )
         }
+        finish()
     }
 
-    private fun showFramePreview() {
-        buttonStart.visibility = View.VISIBLE
-        frameFoodDetailPreview.visibility = View.VISIBLE
-        frameFoodDetailInstruction.visibility = View.GONE
+    private fun controlStartCooking() {
+        showFrameInstruction()
+        food?.let { foodDetailPresenter?.addFoodToCooking(it) }
     }
 
     private fun showFrameInstruction() {
@@ -233,15 +239,15 @@ class FoodDetailActivity :
     }
 
     private fun addFoodToParty(food: FoodDetail) {
-        foodDetailPresenter?.addToParty(food)
+        foodDetailPresenter?.addFoodToParty(food)
     }
 
     private fun addFoodToFamily(food: FoodDetail) {
-        foodDetailPresenter?.addToFamily(food)
+        foodDetailPresenter?.addFoodToFamily(food)
     }
 
     private fun addFoodToFavorite(food: FoodDetail) {
-        foodDetailPresenter?.addToFavorite(food)
+        foodDetailPresenter?.addFoodToFavorite(food)
     }
 
     private fun displayButtonNav() {
@@ -272,7 +278,8 @@ class FoodDetailActivity :
     }
 
     companion object {
-
+        const val REQUEST_FOOD_DETAIL_ACTIVITY = 0
+        const val RESULT_FOOD_ID = "result_food_id"
         private const val TITLE_HASH_TAG = "#food_daily"
         private const val EXTRA_FOOD_ITEM =
             "com.sunasterisk.fooddaily.utils.Constants.EXTRA_FOOD_ITEM"

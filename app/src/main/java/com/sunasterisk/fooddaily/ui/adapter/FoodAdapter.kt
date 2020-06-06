@@ -53,4 +53,15 @@ class FoodAdapter (
         foodList.addAll(newItems)
         notifyDataSetChanged()
     }
+
+    fun deleteItem(foodDetail: FoodDetail) {
+        foodList.forEach {
+            if (it.id.equals(foodDetail.id)) {
+                val index = foodList.indexOf(it)
+                foodList.remove(it)
+                notifyItemRemoved(index)
+                return
+            }
+        }
+    }
 }

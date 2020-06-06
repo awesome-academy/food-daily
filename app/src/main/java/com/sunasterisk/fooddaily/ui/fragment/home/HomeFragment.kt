@@ -16,7 +16,6 @@ import com.sunasterisk.fooddaily.utils.FoodType
 import kotlinx.android.synthetic.main.custom_action_bar.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.search_view.*
-import kotlin.collections.ArrayList
 
 const val ITEM_GRID_WIDTH = 152
 
@@ -137,10 +136,12 @@ class HomeFragment :
     }
 
     private fun onFoodItemClick(food: FoodDetail) {
-        startActivityForResult(
-            context?.let { FoodDetailActivity.getIntent(it, food) },
-            REQUEST_FOOD_DETAIL_ACTIVITY
-        )
+        activity?.let {
+            startActivityForResult(
+                FoodDetailActivity.getIntent(it, food),
+                FoodDetailActivity.REQUEST_FOOD_DETAIL_ACTIVITY
+            )
+        }
     }
 
     private fun controlDisplayFrameSearch() {
@@ -165,7 +166,6 @@ class HomeFragment :
     }
 
     companion object {
-        private const val REQUEST_FOOD_DETAIL_ACTIVITY = 0
         private const val ARGUMENT_FOOD_LIST = "ARGUMENT_FOOD_LIST"
         fun newInstance(foods: List<FoodDetail>): HomeFragment = HomeFragment().apply {
             arguments = bundleOf(ARGUMENT_FOOD_LIST to ArrayList(foods))
