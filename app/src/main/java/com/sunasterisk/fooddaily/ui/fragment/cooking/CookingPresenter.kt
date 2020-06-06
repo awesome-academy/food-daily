@@ -3,7 +3,6 @@ package com.sunasterisk.fooddaily.ui.fragment.cooking
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.data.repository.RecipeRepository
 import com.sunasterisk.fooddaily.data.source.OnLoadedCallback
-import java.lang.Exception
 
 class CookingPresenter (
     private val view: CookingContract.View,
@@ -23,11 +22,7 @@ class CookingPresenter (
         })
     }
 
-    override fun insertFoodToCooking() {
-
-    }
-
-    override fun deleteFoodFromCooking() {
-
+    override fun deleteFoodFromCooking(foodDetail: FoodDetail) {
+        recipeRepository.deleteFoodFromCooking(foodDetail)
     }
 }

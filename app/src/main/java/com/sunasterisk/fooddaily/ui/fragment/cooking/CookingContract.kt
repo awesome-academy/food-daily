@@ -11,7 +11,6 @@ interface CookingContract {
 
     interface Presenter {
         fun getAllCookingFoods()
-        fun insertFoodToCooking()
-        fun deleteFoodFromCooking()
+        fun deleteFoodFromCooking(foodDetail: FoodDetail)
     }
 }

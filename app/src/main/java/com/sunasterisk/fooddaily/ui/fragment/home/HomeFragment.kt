@@ -57,7 +57,7 @@ class HomeFragment :
     override fun showDailyMenu(dailyFoods: List<FoodDetail>) {
         recyclerViewDailyMenu.apply {
             adapter =
-                FoodAdapter(FoodType.FOOD_TYPE_DAILY_MENU) { food ->
+                FoodAdapter(FoodType.DAILY_MENU) { food ->
                     onFoodItemClick(food)
                 }.apply {
                     updateData(dailyFoods)
@@ -69,6 +69,7 @@ class HomeFragment :
     override fun onQueryTextSubmit(query: String?): Boolean {
         query?.let {
             switchByAddFragment(SearchFragment.newInstance(it))
+            hideFrameSearch()
         }
         return true
     }
@@ -97,7 +98,7 @@ class HomeFragment :
     private fun displayOtherFoodList() {
         recyclerViewOtherFood.apply {
             adapter = otherFoods?.let {
-                FoodAdapter(FoodType.FOOD_TYPE_OTHER_LIST) { food ->
+                FoodAdapter(FoodType.OTHER_LIST) { food ->
                     onFoodItemClick(food)
                 }.apply {
                     updateData(it)
@@ -114,7 +115,7 @@ class HomeFragment :
         recyclerViewOtherFood.apply {
             adapter =
                 otherFoods?.let {
-                    FoodAdapter(FoodType.FOOD_TYPE_OTHER_GRID) { food ->
+                    FoodAdapter(FoodType.OTHER_GRID) { food ->
                         onFoodItemClick(food)
                     }.apply {
                         updateData(it)
@@ -157,6 +158,7 @@ class HomeFragment :
     private fun hideFrameSearch() {
         searchViewHomeScreen.setQuery(null, false)
         frameSearch.visibility = View.GONE
+        isShowFrameSearch = false
     }
 
     private fun displayFrameSearch() {
