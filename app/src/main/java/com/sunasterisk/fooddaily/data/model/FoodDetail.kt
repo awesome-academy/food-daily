@@ -104,5 +104,6 @@ data class FoodDetail(
         const val TYPE_FAVORITE = "is_favorite"
         const val TYPE_FAMILY = "is_family"
         const val TYPE_PARTY = "is_party"
+        const val STATE_IS_COOKING = "is_cooking"
     }
 }

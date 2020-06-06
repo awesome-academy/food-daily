@@ -25,6 +25,10 @@ class RecipeRepository private constructor(
         localDataSource.getAllFamilyFoods(callback)
     }
 
+    override fun getAllCookingFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
+        localDataSource.getAllCookingFoods(callback)
+    }
+
     override fun addToFavorite(foodDetail: FoodDetail) {
         localDataSource.addToFavorite(foodDetail)
     }
@@ -37,6 +41,10 @@ class RecipeRepository private constructor(
         localDataSource.addToParty(foodDetail)
     }
 
+    override fun addToCooking(foodDetail: FoodDetail) {
+        localDataSource.addToCooking(foodDetail)
+    }
+
     override fun deleteFoodFromFavorite(foodDetail: FoodDetail) {
 
     }
@@ -47,6 +55,10 @@ class RecipeRepository private constructor(
 
     override fun deleteFoodFromParty(foodDetail: FoodDetail) {
 
+    }
+
+    override fun deleteFoodFromCooking(foodDetail: FoodDetail) {
+        localDataSource.deleteFoodFromCooking(foodDetail)
     }
 
     companion object {

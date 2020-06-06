@@ -30,6 +30,12 @@ class RecipeLocalDataSource private constructor(
         }, callback).execute(Constants.EMPTY_PARAMS)
     }
 
+    override fun getAllCookingFoods(callback: OnLoadedCallback<List<FoodDetail>>) {
+        LocalAsyncTask(object: LocalDataHandler<String, List<FoodDetail>> {
+            override fun execute(params: String): List<FoodDetail> = foodDAO.getAllCookingFoods()
+        }, callback).execute(Constants.EMPTY_PARAMS)
+    }
+
     override fun addToFavorite(foodDetail: FoodDetail) {
         foodDAO.insertFoodFavorite(foodDetail)
     }
@@ -42,6 +48,10 @@ class RecipeLocalDataSource private constructor(
         foodDAO.insertFoodParty(foodDetail)
     }
 
+    override fun addToCooking(foodDetail: FoodDetail) {
+        foodDAO.insertFoodCooking(foodDetail)
+    }
+
     override fun deleteFoodFromFavorite(foodDetail: FoodDetail) {
 
     }
@@ -52,6 +62,10 @@ class RecipeLocalDataSource private constructor(
 
     override fun deleteFoodFromParty(foodDetail: FoodDetail) {
 
+    }
+
+    override fun deleteFoodFromCooking(foodDetail: FoodDetail) {
+        foodDAO.deleteFoodCooking(foodDetail)
     }
 
     companion object {

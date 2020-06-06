@@ -7,15 +7,14 @@ class FoodDetailPresenter(
     private val recipeRepository: RecipeRepository
 ): FoodDetailContract.Presenter {
 
-    override fun addToFavorite(food: FoodDetail) {
-        recipeRepository.addToFavorite(food)
-    }
+    override fun addFoodToFavorite(food: FoodDetail) = recipeRepository.addToFavorite(food)
 
-    override fun addToFamily(food: FoodDetail) {
-        recipeRepository.addToFamily(food)
-    }
+    override fun addFoodToFamily(food: FoodDetail) = recipeRepository.addToFamily(food)
 
-    override fun addToParty(food: FoodDetail) {
-        recipeRepository.addToParty(food)
-    }
+    override fun addFoodToParty(food: FoodDetail) = recipeRepository.addToParty(food)
+
+    override fun addFoodToCooking(food: FoodDetail) = recipeRepository.addToCooking(food)
+
+    override fun deleteFoodFromCooking(food: FoodDetail) =
+        recipeRepository.deleteFoodFromCooking(food)
 }

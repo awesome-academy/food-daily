@@ -45,7 +45,8 @@ open class FoodDailyDatabase private constructor(
                     FoodDetail.IMAGE_URL + " TEXT," +
                     FoodDetail.TYPE_FAVORITE + " TEXT," +
                     FoodDetail.TYPE_FAMILY + " TEXT," +
-                    FoodDetail.TYPE_PARTY + " TEXT);"
+                    FoodDetail.TYPE_PARTY + " TEXT," +
+                    FoodDetail.STATE_IS_COOKING + " TEXT);"
 
         private const val SQL_CREATE_TABLE_INGREDIENT =
             "CREATE TABLE " + Ingredient.TABLE_NAME + " (" +
