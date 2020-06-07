@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sunasterisk.fooddaily.data.model.FoodDetail
 import com.sunasterisk.fooddaily.utils.applyGlide
 import kotlinx.android.synthetic.main.item_daily_menu_food.view.*
+import kotlinx.android.synthetic.main.item_food_collection.view.*
 import kotlinx.android.synthetic.main.item_other_food_grid.view.*
 import kotlinx.android.synthetic.main.item_other_food_list.view.*
+import kotlinx.android.synthetic.main.item_search_result.view.*
 
 abstract class FoodViewHolder(
     view: View,
@@ -67,6 +69,42 @@ class OtherFoodGridViewHolder(
             textOtherGridPrice.text = food.price
             textOtherGridReadyMinutes.text = food.readyMinutes
             imageFoodOtherGrid.applyGlide(food.imageUrl)
+        }
+    }
+}
+
+class CookingFoodViewHolder(
+    view: View,
+    onClickListener: (FoodDetail) -> Unit,
+    private val onClickDelete: (FoodDetail) -> Unit
+) : FoodViewHolder(view, onClickListener) {
+
+    override fun bind(food: FoodDetail) {
+        foodDetail = food
+        itemView.apply {
+            textFoodNameCollection.text = food.title
+            textFoodNameCollection.isSelected = true
+            textFoodCollectionPrice.text = food.price
+            textFoodCollectionReadyMinutes.text = food.readyMinutes
+            imageFoodCollection.applyGlide(food.imageUrl)
+            buttonDeleteFood.setOnClickListener {
+                onClickDelete(food)
+            }
+        }
+    }
+}
+
+class SearchResultFoodViewHolder(
+    view: View,
+    onClickListener: (FoodDetail) -> Unit
+) : FoodViewHolder(view, onClickListener) {
+
+    override fun bind(food: FoodDetail) {
+        foodDetail = food
+        itemView.apply {
+            textFoodNameSearchResult.text = food.title
+            textFoodNameSearchResult.isSelected = true
+            imageFoodSearchResult.applyGlide(food.imageUrl)
         }
     }
 }

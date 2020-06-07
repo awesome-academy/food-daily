@@ -16,24 +16,39 @@ class FoodAdapter (
 
     private val foodList = mutableListOf<FoodDetail>()
 
+    var onClickDelete: (FoodDetail) -> Unit = {_ -> }
+
     override fun getItemViewType(position: Int): Int = viewType
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         return when (viewType) {
-            FoodType.FOOD_TYPE_DAILY_MENU -> {
+            FoodType.DAILY_MENU -> {
                 DailyMenuViewHolder(
                     inflateView(parent.context, R.layout.item_daily_menu_food, parent),
                     onClickListener
                 )
             }
-            FoodType.FOOD_TYPE_OTHER_LIST -> {
+            FoodType.OTHER_LIST -> {
                 OtherFoodListViewHolder(
                     inflateView(parent.context, R.layout.item_other_food_list, parent),
                     onClickListener
                 )
             }
-            else -> OtherFoodGridViewHolder(
-                inflateView(parent.context, R.layout.item_other_food_grid, parent),
+            FoodType.OTHER_GRID -> {
+                OtherFoodGridViewHolder(
+                    inflateView(parent.context, R.layout.item_other_food_grid, parent),
+                    onClickListener
+                )
+            }
+            FoodType.COOKING -> {
+                CookingFoodViewHolder(
+                    inflateView(parent.context, R.layout.item_food_collection, parent),
+                    onClickListener,
+                    onClickDelete
+                )
+            }
+            else -> SearchResultFoodViewHolder(
+                inflateView(parent.context, R.layout.item_search_result, parent),
                 onClickListener
             )
         }

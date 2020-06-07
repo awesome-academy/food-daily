@@ -25,6 +25,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        tools:listitem="@layout/item_other_food_list"/>
+        tools:listitem="@layout/item_food_collection"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

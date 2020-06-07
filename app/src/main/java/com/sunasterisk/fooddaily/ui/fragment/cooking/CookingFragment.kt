@@ -23,7 +23,11 @@ class CookingFragment : BaseFragment(), CookingContract.View {
     override val layoutRes: Int = R.layout.fragment_cooking
 
     private var cookingPresenter: CookingPresenter? = null
-    private val cookingAdapter = FoodAdapter(FoodType.FOOD_TYPE_OTHER_LIST) { onFoodItemClick(it) }
+    private val cookingAdapter = FoodAdapter(FoodType.COOKING) {
+        onFoodItemClick(it)
+    }.apply {
+        onClickDelete = ::onFoodItemDelete
+    }
     override fun initActionBar() {
         textActionBarTitle.text = getString(R.string.title_cooking)
         buttonBackActionBar.visibility = View.GONE
@@ -80,6 +84,11 @@ class CookingFragment : BaseFragment(), CookingContract.View {
                 FoodDetailActivity.REQUEST_FOOD_DETAIL_ACTIVITY
             )
         }
+    }
+
+    private fun onFoodItemDelete(food: FoodDetail) {
+        cookingPresenter?.deleteFoodFromCooking(food)
+        cookingAdapter.deleteItem(food)
     }
 
     companion object {

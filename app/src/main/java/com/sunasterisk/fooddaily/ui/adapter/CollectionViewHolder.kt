@@ -15,7 +15,7 @@ class CollectionViewHolder(
 ) : RecyclerView.ViewHolder(view) {
 
     private val adapterContent: FoodAdapter by lazy {
-        FoodAdapter(FoodType.FOOD_TYPE_OTHER_LIST) { onClickListener(it) }
+        FoodAdapter(FoodType.OTHER_LIST) { onClickListener(it) }
     }
 
     private var collection: Collection? = null
